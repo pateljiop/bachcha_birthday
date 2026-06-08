@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>birthday-protocol-komal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="confetti" id="confetti"></div>
+
+  <audio id="bgMusic" loop>
+    <source src="" type="audio/mpeg">
+  </audio>
+
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-label="logo">
+            <path d="M12 3C8.2 3 5 6.1 5 10c0 5.7 7 11 7 11s7-5.3 7-11c0-3.9-3.2-7-7-7Z" stroke="white" stroke-width="1.8"/>
+            <path d="M8.5 11.5c1-1.5 2.1-2.2 3.5-2.2 1.4 0 2.5.7 3.5 2.2" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div>Birthday Protocol</div>
+          <div class="brand-sub">CSE edition · story archive</div>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button class="music-btn" id="musicToggle">Music: Off</button>
+        <button class="theme-btn" id="themeToggle">Theme</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+
+    <!-- 1. BIRTHDAY HERO FIRST -->
+    <section class="hero">
+      <div>
+        <span class="eyebrow">🎉 Birthday mode on · Soft teasing · Cake + games + surprises</span>
+        <h1>Happy Birthday, Bachcha 💖</h1>
+        <p>
+          Aaj ka plan simple hai — thoda smile, thoda teasing, thoda cake, thoda game,
+          aur end me kuch aisi yaadein jo dil ko softly touch karein.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="#ritual">Start Birthday Ritual</a>
+          <a class="btn-secondary" href="#games">Play Mini Games</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <span class="tag">Birthday special</span>
+        <h3>Aaj ka celebration protocol</h3>
+        <p class="muted">
+          No sadness first. No heavy emotions first. Pehle celebration, phir fun,
+          aur phir aaram se memory lane.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="muted">Mood</span>
+            <strong>Happy</strong>
+          </div>
+
+          <div class="stat">
+            <span class="muted">Vibe</span>
+            <strong>Cute + classy</strong>
+          </div>
+
+          <div class="stat">
+            <span class="muted">Games</span>
+            <strong>2+</strong>
+          </div>
+
+          <div class="stat">
+            <span class="muted">Ending</span>
+            <strong>Soft memories</strong>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- 2. CAKE RITUAL -->
+    <section id="ritual">
+      <div class="section-head">
+        <div>
+          <span class="tag">Birthday ritual</span>
+          <h2>Realistic cake moment</h2>
+        </div>
+        <p>
+          Cake ritual ko game-jaisa nahi, actual birthday scene jaisa feel dene ke liye
+          soft lighting, pause, wish, blow, aur cut ka natural sequence rakha gaya hai.
+        </p>
+      </div>
+
+      <div class="ritual-stage">
+        <div class="cake-scene panel">
+          <div class="cake" aria-label="birthday cake illustration">
+            <div class="candle">
+              <div class="flame" id="flame"></div>
+              <div class="smoke" id="smoke"></div>
+            </div>
+
+            <div class="icing"></div>
+            <div class="cake-layer layer-top"></div>
+            <div class="cake-layer layer-bottom"></div>
+            <div class="slice" id="cakeSlice"></div>
+          </div>
+
+          <div class="table"></div>
+        </div>
+
+        <div class="panel">
+          <h3>One candle. One wish. One cut.</h3>
+          <p class="muted">
+            Thoda teasing, thoda softness, aur full birthday vibe. Neeche diye steps same order me chalenge.
+          </p>
+
+          <div class="ritual-controls">
+            <button class="ritual-btn active" id="btnLight">1. Candle ready hai — glow dekh lo ✨</button>
+            <button class="ritual-btn" id="btnWish">2. Aankhen band karo, dil se wish maango 💭</button>
+            <button class="ritual-btn" id="btnBlow">3. Ek saans me candle blow karo 🌬️</button>
+            <button class="ritual-btn" id="btnCut">4. Ab cake cut karo 🎂</button>
+          </div>
+
+          <div class="ritual-log" id="ritualLog">
+            Cake reveal ho chuka hai. Soft lights on. Birthday moment officially loaded.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. GAMES -->
+    <section id="games">
+      <div class="section-head">
+        <div>
+          <span class="tag">Mini games</span>
+          <h2>Teasing + celebration + play</h2>
+        </div>
+        <p>
+          Balloon blast, memory match, aur ek small quiz — sab kuch light, playful aur birthday vibe me.
+        </p>
+      </div>
+
+      <div class="games">
+        <article class="game-card">
+          <h3>Balloon Blast</h3>
+          <p class="muted">Pop 7 balloons to unlock a sweet birthday line.</p>
+
+          <div class="game-topline">
+            <strong>Score: <span id="balloonScore">0</span>/7</strong>
+            <button class="btn-secondary small-btn" id="startBalloons">Start</button>
+          </div>
+
+          <div class="balloon-field" id="balloonField"></div>
+          <div class="feedback" id="balloonFeedback">
+            Ready? Bas dhyaan rahe — kuch balloons me teasing bhi milegi.
+          </div>
+        </article>
+
+        <article class="game-card">
+          <h3>Memory Match</h3>
+          <p class="muted">Dates, nicknames, aur story pieces ko pair karo.</p>
+
+          <div class="game-topline">
+            <strong>Pairs: <span id="matchScore">0</span>/4</strong>
+            <button class="btn-secondary small-btn" id="resetMemory">Reset</button>
+          </div>
+
+          <div class="memory-grid" id="memoryGrid"></div>
+          <div class="feedback" id="memoryFeedback">
+            Same pair milte hi memory archive unlock hota jayega.
+          </div>
+        </article>
+      </div>
+
+      <div class="panel quiz-panel">
+        <h3>Quick Relationship Decryptor</h3>
+        <p class="muted">
+          Easy sa playful quiz — smart enough for CSE crowd, sweet enough for birthday mood.
+        </p>
+
+        <div id="quizBox" class="quiz-box">
+          <strong id="quizQuestion">Question loading...</strong>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="feedback" id="quizFeedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. MEMORY LANE LATER -->
+    <section id="memories">
+      <div class="section-head">
+        <div>
+          <span class="tag">Memory lane</span>
+          <h2>Ab thodi si yaadein</h2>
+        </div>
+        <p>
+          Celebration ke baad, bas kuch pal jo quietly dil me save ho gaye.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="story-card">
+          <h3>Pehli baat</h3>
+          <p>
+            12 September 2024 ko pehli baar baat hui thi. Shuruaat ek college enquiry ke through hui —
+            bina kisi plan ke, bina kisi dramatic setup ke.
+          </p>
+          <p class="muted">
+            Baatein badhti gayin, comfort aata gaya, aur dosti kab pyaar wali softness me badal gayi,
+            pata hi nahi chala. Ye meri life ka sabse pyaara glitch tha.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <h3>Golden Time</h3>
+          <p>
+            12 November 2024 ko first meeting hui. Main unse milne unke area gaya tha,
+            aur woh moment simple hote hue bhi meri life ka Golden Time ban gaya.
+          </p>
+          <p class="muted">
+            Kuch yaadein loud nahi hoti — bas dil me permanently save ho jaati hain. Ye wahi memory hai.
+          </p>
+        </article>
+      </div>
+
+      <div class="panel timeline-panel">
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>Bulbul</strong> — ek soft, pyaara naam jo sirf ek person ke liye fit baithta hai.
+          </div>
+
+          <div class="timeline-item">
+            <strong>Bachcha</strong> — woh naam jo usse sabse zyada pasand hai, aur jisme teasing bhi hai, closeness bhi.
+          </div>
+
+          <div class="timeline-item">
+            <strong>Current reality</strong> — waqt badal gaya, raaste alag ho gaye, lekin respect aur genuine warmth ab bhi waise hi hain.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FINAL SOFT NOTE -->
+    <section>
+      <div class="panel final-panel">
+        <span class="tag">Final note</span>
+        <h2>Happy Birthday, Bachcha.</h2>
+        <p class="final-text">
+          Kuch stories loudly announce nahi hoti. Bas quietly heart me jagah bana leti hain.
+          Jo bhi tha, jitna bhi tha, meri yaadon me woh hamesha achha hi rahega.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer-note shell">
+    Built as a birthday experience with teasing, rituals, mini-games, and your story at the center.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
