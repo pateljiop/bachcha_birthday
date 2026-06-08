@@ -161,14 +161,14 @@ function startBalloonGame() {
 startBalloons?.addEventListener("click", startBalloonGame);
 
 const photoMemories = [
-  { img: "images/photo1.jpg", text: "Ye smile alag hi level ki hai 💖" },
-  { img: "images/photo2.jpg", text: "Is pic me pure birthday vibes hain ✨" },
-  { img: "images/photo3.jpg", text: "Is memory ko skip karna impossible hai 🥹" },
-  { img: "images/photo4.jpg", text: "Cutest frame unlocked 🌸" },
-  { img: "images/photo5.jpg", text: "Yahan se soft feelings start hoti hain 💫" },
-  { img: "images/photo6.jpg", text: "Is pic me tum extra pyaari lag rahi ho 🌷" },
-  { img: "images/photo7.jpg", text: "Core memory detected 💌" },
-  { img: "images/photo8.jpg", text: "Ye wali photo repeat pe dekhne layak hai 😌" }
+  { img: "assets/photo1.jpg", text: "Core memory detected 💌" },
+  { img: "assets/photo2.jpg", text: "Yahan se soft feelings start hoti hain 💫" },
+  { img: "assets/photo3.jpg", text: "Is memory ko skip karna impossible hai 🥹" },
+  { img: "assets/photo4.jpg", text: "Cutest frame unlocked 🌸" },
+  { img: "assets/photo5.jpg", text: "Is pic me pure birthday vibes hain ✨" },
+  { img: "assets/photo6.jpg", text: "Ye smile alag hi level ki hai 💖" },
+  { img: "assets/photo7.jpg", text: "Ye wali photo repeat pe dekhne layak hai 😌" },
+  { img: "assets/photo8.jpg", text: "Is pic me tum extra pyaari lag rahi ho 🌷" }
 ];
 
 let openedCards = [];
