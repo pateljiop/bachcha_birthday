@@ -1,4 +1,5 @@
-:root, [data-theme="light"] {
+:root,
+[data-theme="light"] {
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
   --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
   --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -35,8 +36,8 @@
   --radius-lg: 1.25rem;
   --radius-xl: 1.75rem;
 
-  --font-body: 'Space Grotesk', sans-serif;
-  --font-display: 'Playfair Display', serif;
+  --font-body: "Space Grotesk", sans-serif;
+  --font-display: "Playfair Display", serif;
 }
 
 [data-theme="dark"] {
@@ -82,6 +83,10 @@ svg {
   max-width: 100%;
 }
 
+a {
+  text-decoration: none;
+}
+
 button,
 a {
   font: inherit;
@@ -90,10 +95,6 @@ a {
 button {
   border: none;
   cursor: pointer;
-}
-
-a {
-  text-decoration: none;
 }
 
 .shell {
@@ -188,7 +189,7 @@ h3 {
 
 .hero h1 {
   font-size: var(--text-2xl);
-  margin: 1rem 0 1rem;
+  margin: 1rem 0;
 }
 
 .hero p {
@@ -571,7 +572,8 @@ section {
   background: rgba(255, 255, 255, 0.5);
 }
 
-.memory-grid {
+/* Photo memory match */
+.photo-memory-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
@@ -579,25 +581,68 @@ section {
 }
 
 .memory-card {
+  position: relative;
   aspect-ratio: 1 / 1;
   border-radius: 18px;
-  background: var(--color-surface-2);
-  border: 1px solid var(--color-border);
-  display: grid;
-  place-items: center;
-  padding: 10px;
-  text-align: center;
-  font-size: 0.9rem;
-  font-weight: 700;
   cursor: pointer;
-  transition: 0.25s ease;
+  perspective: 1000px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  overflow: visible;
+}
+
+.memory-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  transition: transform 0.5s ease;
   transform-style: preserve-3d;
 }
 
-.memory-card.revealed,
+.memory-card.revealed .memory-card-inner,
+.memory-card.matched .memory-card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+
+.memory-front {
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01)),
+    var(--color-surface-2);
+  color: var(--color-text);
+  font-size: 1.8rem;
+}
+
+.memory-back {
+  transform: rotateY(180deg);
+  background: var(--color-surface);
+}
+
+.memory-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .memory-card.matched {
-  background: linear-gradient(135deg, var(--color-primary-soft), rgba(255, 255, 255, 0.05));
   transform: translateY(-2px);
+}
+
+.memory-card.matched .memory-face {
+  border-color: rgba(255, 95, 155, 0.45);
 }
 
 .quiz-panel {
@@ -720,8 +765,8 @@ section {
     align-items: flex-start;
   }
 
-  .memory-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .photo-memory-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .cake-scene {
@@ -784,7 +829,7 @@ section {
     gap: 0.75rem;
   }
 
-  .memory-grid {
+  .photo-memory-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -818,13 +863,17 @@ section {
     padding: 0.5rem 0.8rem;
   }
 
-  .memory-grid {
+  .photo-memory-grid {
     gap: 10px;
   }
 
   .memory-card {
-    font-size: 0.82rem;
-    padding: 8px;
+    border-radius: 14px;
+  }
+
+  .memory-card-inner,
+  .memory-face {
+    border-radius: 14px;
   }
 
   .cake {
